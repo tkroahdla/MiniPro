@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import Router from './Router';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Playfair+Display:ital@0;1&display=swap');
+
   /* http://meyerweb.com/eric/tools/css/reset/
    v5.0.1 | 20191019
    License: none (public domain)
@@ -57,7 +57,7 @@ table {
   box-sizing: border-box;
 }
 body{
-  font-family: 'Nanum Brush Script', cursive;
+  font-family: '', fantasy ;
   background-color: ${(props) => props.theme.bgColor};
   color:${(props) => props.theme.textColor}
 }
