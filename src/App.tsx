@@ -57,7 +57,7 @@ table {
   box-sizing: border-box;
 }
 body{
-  font-family: '', fantasy ;
+  font-family: 'Playfair Display', serif;
   background-color: ${(props) => props.theme.bgColor};
   color:${(props) => props.theme.textColor}
 }

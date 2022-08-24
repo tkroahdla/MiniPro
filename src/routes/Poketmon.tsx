@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import PoketGif from './PoketGif';
+import PoketLogo from './PoketLogo';
 
 interface RouteParams {
   poketId: string;
@@ -7,6 +9,7 @@ interface RouteParams {
 
 const Container = styled.div`
   padding: 0px 30px;
+  width: 100vw;
 `;
 
 const Wrapper = styled.div`
@@ -31,13 +34,9 @@ function Poketmon() {
   return (
     <Container>
       <Header>
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
-          alt="asdf"
-          width="300px"
-          height="100px"
-        />
+        <PoketLogo />
       </Header>
+      <PoketGif index={poketId} />
     </Container>
   );
 }

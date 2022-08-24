@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchPoketmons } from '../api';
+import PoketLogo from './PoketLogo';
 
 const Container = styled.div`
   padding: 0px 30px;
+  width: 100vw;
 `;
 
 const Wrapper = styled.div`
@@ -37,6 +39,7 @@ const Poketmon = styled.div`
   justify-content: center;
   width: 200px;
   font-size: 25px;
+  font-weight: 550;
   background-color: white;
   color: ${(props) => props.theme.textColor};
   margin: 13px;
@@ -57,14 +60,6 @@ const Poketmon = styled.div`
     border-color: #a7aeec;
     margin: 10px 13px;
   }
-
-  img {
-    display: block;
-    margin-top: 18px;
-    margin-bottom: 15px;
-    width: 100%;
-    height: 80px;
-  }
 `;
 
 const Title = styled.h1`
@@ -75,6 +70,23 @@ const Title = styled.h1`
 const PoketName = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const ImgWrapper = styled.div`
+  margin-top: -10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  img {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 80px;
+  }
 `;
 
 interface IPoketmon {
@@ -99,12 +111,7 @@ function Poketmons() {
   return (
     <Container>
       <Header>
-        <img
-          src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
-          alt="asdf"
-          width="300px"
-          height="100px"
-        />
+        <PoketLogo />
       </Header>
       {isLoading === true ? (
         <div>Loading....</div>
@@ -115,17 +122,19 @@ function Poketmons() {
               <Poketmon>
                 <Link
                   to={{
-                    pathname: `/${i}`,
+                    pathname: `/${i + 1}`,
                     state: { num: i },
                   }}
                 >
                   <PoketName>{poketmon.name}</PoketName>
-                  <img
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
-                      i + 1
-                    }.gif`}
-                    alt="profile"
-                  />
+                  <ImgWrapper>
+                    <img
+                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
+                        i + 1
+                      }.gif`}
+                      alt="profile"
+                    />
+                  </ImgWrapper>
                 </Link>
               </Poketmon>
             ))}
