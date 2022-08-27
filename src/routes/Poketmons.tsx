@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchPoketmons } from '../api';
-import PoketLogo from './PoketLogo';
+import PoketLogo from '../components/PoketLogo';
 
 const Container = styled.div`
   padding: 0px 30px;
@@ -38,14 +38,15 @@ const Poketmon = styled.div`
 
   justify-content: center;
   width: 200px;
-  font-size: 25px;
-  font-weight: 550;
+  font-size: 21px;
+  font-weight: 700;
   background-color: white;
   color: ${(props) => props.theme.textColor};
   margin: 13px;
   border-radius: 15px;
   a {
     padding: 20px;
+    width: 100%;
     transition: color 0.3s ease-in;
     display: block;
   }
@@ -72,21 +73,16 @@ const PoketName = styled.div`
   justify-content: center;
 `;
 
-const ImgWrapper = styled.div`
-  margin-top: -10px;
+const ImgWrapper1 = styled.div`
   display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+`;
 
-  img {
-    display: flex;
-    justify-content: center;
-    margin-top: 18px;
-    margin-bottom: 15px;
-    width: 100%;
-    height: 80px;
-  }
+const Img = styled.img`
+  width: 95px;
+  height: 95px;
 `;
 
 interface IPoketmon {
@@ -127,14 +123,14 @@ function Poketmons() {
                   }}
                 >
                   <PoketName>{poketmon.name}</PoketName>
-                  <ImgWrapper>
-                    <img
+                  <ImgWrapper1>
+                    <Img
                       src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${
                         i + 1
                       }.gif`}
                       alt="profile"
                     />
-                  </ImgWrapper>
+                  </ImgWrapper1>
                 </Link>
               </Poketmon>
             ))}

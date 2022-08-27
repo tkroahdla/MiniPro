@@ -1,7 +1,10 @@
+import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import PoketGif from './PoketGif';
-import PoketLogo from './PoketLogo';
+import { fetchPokeTypes } from '../api';
+import PoketGif from '../components/PoketGif';
+import PoketLogo from '../components/PoketLogo';
+import PokeTypes from '../components/PokeTypes';
 
 interface RouteParams {
   poketId: string;
@@ -17,6 +20,7 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 100%;
   padding: 0px 200px;
+  margin-top: 50px;
 `;
 
 const Header = styled.header`
@@ -28,15 +32,72 @@ const Header = styled.header`
   margin-bottom: 15px;
 `;
 
+const LeftDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 700px;
+`;
+
+const RightDiv = styled.div`
+  display: flex;
+  width: 700px;
+  background-color: black;
+`;
+
+const ImgDiv = styled.div`
+  display: flex;
+  border-style: solid;
+  border-width: 6px;
+  border-color: #a7aeec;
+  border-radius: 15px;
+  background-color: white;
+  width: 400px;
+  padding: 80px;
+`;
+
+interface IPokeTypes {
+  types: IPokeType[];
+}
+
+interface IPokeType {
+  slot: number;
+  type: IType;
+}
+
+interface IType {
+  name: string;
+}
+
 function Poketmon() {
   const { poketId } = useParams<RouteParams>();
-  console.log(poketId);
+
+  const { isLoading, data } = useQuery<IPokeTypes>(['PokeTypes'], () =>
+    fetchPokeTypes(poketId)
+  );
+
+  console.log(data);
+  console.log(data?.types[0].type.name);
   return (
     <Container>
       <Header>
         <PoketLogo />
       </Header>
-      <PoketGif index={poketId} />
+
+      <Wrapper>
+        <LeftDiv>
+          <ImgDiv>
+            <PoketGif index={poketId} />
+          </ImgDiv>
+        </LeftDiv>
+
+        <RightDiv>
+          {isLoading === true ? (
+            <div>Loading...</div>
+          ) : (
+            <PokeTypes data={data} />
+          )}
+        </RightDiv>
+      </Wrapper>
     </Container>
   );
 }

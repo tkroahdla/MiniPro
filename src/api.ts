@@ -6,6 +6,8 @@ export function fetchPoketmons() {
   );
 }
 
-export function fetchPokeImg(url: string) {
-  return fetch(url).then((response) => response.json());
+export function fetchPokeTypes(number: string) {
+  return fetch(`${BASE_URL}/pokemon/${number}`).then((response) =>
+    response.json()
+  );
 }

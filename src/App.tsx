@@ -35,6 +35,11 @@ footer, header, hgroup, main, menu, nav, section {
 *[hidden] {
     display: none;
 }
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 body {
   line-height: 1;
 }
@@ -57,7 +62,7 @@ table {
   box-sizing: border-box;
 }
 body{
-  font-family: 'Playfair Display', serif;
+  font-family: 'Aboreto', cursive;
   background-color: ${(props) => props.theme.bgColor};
   color:${(props) => props.theme.textColor}
 }
