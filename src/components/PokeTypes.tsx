@@ -27,10 +27,10 @@ const Button = styled.button`
   border-style: solid;
 `;
 
-function PokeTypes({ data }: { data: IPokeTypes | undefined }) {
+function PokeTypes({ info }: { info: IPokeTypes | undefined }) {
   return (
     <div>
-      {data?.types.map((types) => (
+      {info?.types.map((types) => (
         <Button>{types?.type.name}</Button>
       ))}
     </div>

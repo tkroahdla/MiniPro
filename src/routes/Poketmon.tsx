@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { fetchPokeTypes } from '../api';
+import { fetchPokeInfo } from '../api';
+
+import PokeInfo from '../components/PokeInfo';
 import PoketGif from '../components/PoketGif';
 import PoketLogo from '../components/PoketLogo';
 import PokeTypes from '../components/PokeTypes';
@@ -40,8 +42,8 @@ const LeftDiv = styled.div`
 
 const RightDiv = styled.div`
   display: flex;
+  justify-content: center;
   width: 700px;
-  background-color: black;
 `;
 
 const ImgDiv = styled.div`
@@ -51,7 +53,8 @@ const ImgDiv = styled.div`
   border-color: #a7aeec;
   border-radius: 15px;
   background-color: white;
-  width: 400px;
+  width: 300px;
+  height: 300px;
   padding: 80px;
 `;
 
@@ -70,9 +73,14 @@ interface IType {
 
 function Poketmon() {
   const { poketId } = useParams<RouteParams>();
-
+  const no =
+    Number(poketId) >= 100
+      ? 'No.' + poketId
+      : Number(poketId) >= 10
+      ? 'No.0' + poketId
+      : 'No.00' + poketId;
   const { isLoading, data } = useQuery<IPokeTypes>(['PokeTypes'], () =>
-    fetchPokeTypes(poketId)
+    fetchPokeInfo(poketId)
   );
 
   console.log(data);
@@ -94,7 +102,8 @@ function Poketmon() {
           {isLoading === true ? (
             <div>Loading...</div>
           ) : (
-            <PokeTypes data={data} />
+            <PokeInfo no={no} info={data}></PokeInfo>
+            // <PokeTypes data={data} />
           )}
         </RightDiv>
       </Wrapper>

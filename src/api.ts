@@ -6,7 +6,7 @@ export function fetchPoketmons() {
   );
 }
 
-export function fetchPokeTypes(number: string) {
+export function fetchPokeInfo(number: string) {
   return fetch(`${BASE_URL}/pokemon/${number}`).then((response) =>
     response.json()
   );

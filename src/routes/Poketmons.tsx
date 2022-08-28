@@ -58,7 +58,7 @@ const Poketmon = styled.div`
 
   :hover {
     border-width: 6px;
-    border-color: #a7aeec;
+    border-color: ${(props) => props.theme.borderColor};
     margin: 10px 13px;
   }
 `;
