@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { fetchPokeInfo } from '../api';
 
 import PokeInfo from '../components/PokeInfo';
-import PoketGif from '../components/PoketGif';
-import PoketLogo from '../components/PoketLogo';
+import PoketGif from '../components/PokeGif';
+import PoketLogo from '../components/PokeLogo';
 import PokeTypes from '../components/PokeTypes';
 
 interface RouteParams {
@@ -58,8 +58,13 @@ const ImgDiv = styled.div`
   padding: 80px;
 `;
 
-interface IPokeTypes {
+interface IPokeInfo {
   types: IPokeType[];
+  forms: IPokeForms[];
+}
+
+interface IPokeForms {
+  name: string;
 }
 
 interface IPokeType {
@@ -79,7 +84,7 @@ function Poketmon() {
       : Number(poketId) >= 10
       ? 'No.0' + poketId
       : 'No.00' + poketId;
-  const { isLoading, data } = useQuery<IPokeTypes>(['PokeTypes'], () =>
+  const { isLoading, data } = useQuery<IPokeInfo>(['PokeTypes'], () =>
     fetchPokeInfo(poketId)
   );
 

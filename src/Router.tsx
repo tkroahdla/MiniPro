@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Poketmon from './routes/Poketmon';
-import Poketmons from './routes/Poketmons';
+import Poketmon from './routes/Pokemon';
+import Pokemons from './routes/Pokemons';
 
 function Router() {
   return (
@@ -10,7 +10,7 @@ function Router() {
           <Poketmon />
         </Route>
         <Route path="/">
-          <Poketmons />
+          <Pokemons />
         </Route>
       </Switch>
     </BrowserRouter>

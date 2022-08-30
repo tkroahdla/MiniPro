@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchPoketmons } from '../api';
-import PoketLogo from '../components/PoketLogo';
+import PokeLogo from '../components/PokeLogo';
 
 const Container = styled.div`
   padding: 0px 30px;
@@ -107,7 +107,7 @@ function Poketmons() {
   return (
     <Container>
       <Header>
-        <PoketLogo />
+        <PokeLogo />
       </Header>
       {isLoading === true ? (
         <div>Loading....</div>

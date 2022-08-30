@@ -16,20 +16,22 @@ interface IType {
 const Button = styled.button`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 13px;
-  padding: 8px 10px;
+  font-weight: bold;
+  padding: 8px 8px 11px;
   text-align: center;
   display: flex;
-  border-radius: 50px;
+  color: white;
 
-  border-color: green;
+  border-radius: 1em;
+  border-color: #39b6ff;
   background-color: green;
-  border-width: 1px;
+  border-width: 3px;
   border-style: solid;
 `;
 
 function PokeTypes({ info }: { info: IPokeTypes | undefined }) {
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
       {info?.types.map((types) => (
         <Button>{types?.type.name}</Button>
       ))}
