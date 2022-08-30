@@ -1,23 +1,11 @@
 import styled from 'styled-components';
 
-interface IPokeTypes {
-  types: IPokeType[];
-}
-
-interface IPokeType {
-  slot: number;
-  type: IType;
-}
-
-interface IType {
-  name: string;
-}
-
 const Button = styled.button`
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 13px;
   font-weight: bold;
-  padding: 8px 8px 11px;
+  padding: 4px 8px 7px;
+  margin-right: 7px;
   text-align: center;
   display: flex;
   color: white;
@@ -29,11 +17,11 @@ const Button = styled.button`
   border-style: solid;
 `;
 
-function PokeTypes({ info }: { info: IPokeTypes | undefined }) {
+function PokeTypes({ info }: { info: IPokeInfo | undefined }) {
   return (
     <div style={{ display: 'flex' }}>
       {info?.types.map((types) => (
-        <Button>{types?.type.name}</Button>
+        <Button key={types?.type.name}>{types?.type.name}</Button>
       ))}
     </div>
   );

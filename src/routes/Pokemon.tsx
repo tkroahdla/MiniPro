@@ -58,24 +58,6 @@ const ImgDiv = styled.div`
   padding: 80px;
 `;
 
-interface IPokeInfo {
-  types: IPokeType[];
-  forms: IPokeForms[];
-}
-
-interface IPokeForms {
-  name: string;
-}
-
-interface IPokeType {
-  slot: number;
-  type: IType;
-}
-
-interface IType {
-  name: string;
-}
-
 function Poketmon() {
   const { poketId } = useParams<RouteParams>();
   const no =

@@ -1,23 +1,6 @@
 import styled from 'styled-components';
+import PokeAbilities from './PokeAbilities';
 import PokeTypes from './PokeTypes';
-
-interface IPokeInfo {
-  types: IPokeType[];
-  forms: IPokeForms[];
-}
-
-interface IPokeForms {
-  name: string;
-}
-
-interface IPokeType {
-  slot: number;
-  type: IType;
-}
-
-interface IType {
-  name: string;
-}
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,7 +18,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const Number = styled.div`
-  margin: 9px 8px;
+  margin: 13px 22px 9px 0px;
   font-size: 21px;
   font-weight: 600;
   color: black;
@@ -63,7 +46,7 @@ const Name = styled.div`
   width: 270px;
 `;
 
-const TypeWrapper = styled.div`
+const InfoWrapper = styled.div`
   display: flex;
 
   span {
@@ -73,9 +56,10 @@ const TypeWrapper = styled.div`
   }
 `;
 
-const Types = styled.span`
-  font-size: 20px;
+const Information = styled.span`
+  font-size: 22px;
   font-weight: bold;
+  color: black;
   margin: 0px 10px;
 `;
 
@@ -96,10 +80,14 @@ function PokeInfo({
         <Name>{info?.forms[0].name}</Name>
         <Number>{no}</Number>
       </HeaderWrapper>
-      <TypeWrapper>
-        <Types>type : </Types>
+      <InfoWrapper>
+        <Information>type : </Information>
         <PokeTypes info={info}></PokeTypes>
-      </TypeWrapper>
+      </InfoWrapper>
+      <InfoWrapper>
+        <Information>abilities : </Information>
+        <PokeAbilities info={info}></PokeAbilities>
+      </InfoWrapper>
     </Wrapper>
   );
 }
